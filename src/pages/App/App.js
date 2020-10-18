@@ -12,6 +12,8 @@ import EditProfilePage from '../EditProfilePage/EditProfilePage';
 import CreateEventPage from '../CreateEventPage/CreateEventPage';
 import EventsPage from '../EventsPage/EventsPage';
 import eventService from '../../utils/eventService';
+import EventDetailPage from '../EventDetailPage/EventDetailPage';
+
 
 class App extends Component {
   constructor(){
@@ -26,11 +28,16 @@ class App extends Component {
   componentDidMount = async() => {
     if(!this.state.user) return;
     const profile = await profileService.getOne()
-    this.setState({profile})
+      this.setState({profile: profile}, () => (this.state.profile));
+    const events = await eventService.getAll()
+      this.setState({events});
   }
+
+  
 
   handleSignupOrLogin = () => {
     this.setState({user: userService.getUser()});
+    
   }
 
   handleLogout = () => {
@@ -48,7 +55,7 @@ class App extends Component {
 
   handleAddEvent = async(eventData) => {
     const newEvent = await eventService.create(eventData);
-    console.log(eventData)
+
     this.setState((state) => ({
       events: [...state.events, newEvent]
       }),
@@ -65,6 +72,11 @@ class App extends Component {
           
         />
         <Switch>
+          <Route
+              exact
+              path="/events/details"
+              render={({ location }) => <EventDetailPage location={location} />}
+            />
           <Route exact path='/createEvent' render={() =>
             <CreateEventPage
               user={this.state.user}

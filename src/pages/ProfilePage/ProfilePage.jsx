@@ -19,7 +19,7 @@ const ProfilePage = (props) => {
                     
                 </div>
             :
-            <div className="loading">"Loading"</div>
+            <div className="loading">"Refresh Page"</div>
         
     )
 }
