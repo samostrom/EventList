@@ -1,7 +1,17 @@
-Alt-H1 Event List
+# Event List
 
 ![Event List](https://i.imgur.com/MWxA8FJ.png)
 
-Alt-H2 Tech Used
+## Tech Used
 
-#### Javascript, Node.js, 
+#### Javascript, Node.js, React, MongoDB/Mongoose, CSS, HTML, BootStrap
+
+## Links
+
+#### [Trello Board](https://trello.com/b/rJWg1irh/event-group)
+
+## Next Steps
+
+#### More Styling, Search Functionality, Group Pages, Add other Profile to Events, see Events you were invited to
+
+

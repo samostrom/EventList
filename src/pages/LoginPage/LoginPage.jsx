@@ -30,6 +30,7 @@ class LoginPage extends Component {
   }
 
   render() {
+    
     return (
       <div className="LoginPage">
         <header className="header-footer">Log In</header>
