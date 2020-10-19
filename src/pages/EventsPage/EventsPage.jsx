@@ -10,7 +10,7 @@ const ProfilePage = (props) => {
             <>
                 <div className="PageContainer">
                 <br/>
-                <h1>Your Events List</h1>
+                <h1>Events List</h1>
                 <br/>
                     {props.events.map(e => 
                         <EventListItem
