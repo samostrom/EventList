@@ -1,5 +1,7 @@
 # Event List
 
+### Event List is an App designed to allow people a single space to organize their group events. 
+
 ![Event List](https://i.imgur.com/MWxA8FJ.png)
 
 ## Tech Used
