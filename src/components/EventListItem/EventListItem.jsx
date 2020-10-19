@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './EventListItem.css';
 
-function EventListItem({e}) { 
+function EventListItem({e, handleDeleteEvent}) { 
   return (
     <div className='panel panel-default'>
       <div className="panel-heading">
@@ -12,7 +12,7 @@ function EventListItem({e}) {
         <Link
           className='btn btn-xs btn-info'
           to={{
-            pathname: '/event/details',
+            pathname: '/eventDetails',
             state: {e}
           }}
         >
@@ -21,15 +21,15 @@ function EventListItem({e}) {
         <Link
           className='btn btn-xs btn-warning'
           to={{
-            pathname: '/edit',
+            pathname: '/editEvent',
             state: {e}
           }}
         >
           EDIT
         </Link>
         <button
-        //   className='btn btn-xs btn-danger margin-left-10'
-        //   onClick={() => handleDeletePuppy(puppy._id)}
+          className='btn btn-xs btn-danger margin-left-10'
+          onClick={() => handleDeleteEvent(e._id)}
         >
           DELETE
         </button>

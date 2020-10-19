@@ -1,37 +1,42 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import profileService from '../../utils/profileService';
+
 import './NavBar.css';
 
 const NavBar = (props) => {
-  let nav  = props.user ?
-  <div>
-    <span className='NavBar-welcome'>WELCOME, {props.user.name}</span>
-    &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  return (
+  props.user ?
+  <div className="d-flex flex-column align-items-start ml-4 mt-4">
+    <div className="my-2">
+    WELCOME, {props.user.name}
+    </div>
+    <div className="my-2">
     <Link to='/profiles' className='NavBar-link'>Profile</Link>
-    &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    </div>
+    <div className="my-2">
     <Link to='/editProfiles' className='NavBar-link'>Edit Profile</Link>
-    &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    </div>
+    <div className="my-2">
     <Link to='/createEvent' className='CreateEvent'>Create Event</Link>
-    &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    </div>
+    <div className="my-2">
     <Link to='/events' className='MyEvents'>My Events</Link>
-    &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    </div>
+    <div className="my-2">
     <Link to='' className='NavBar-link' onClick={props.handleLogout}>Log Out</Link>
-    
+    </div>
   </div>
   :
-  <div>
+  <div className="d-flex flex-column align-items-start ml-5 mt-4">
+    <div className="my-2"> 
     <Link to='/login' className='NavBar-link'>Log in</Link>
-    &nbsp;&nbsp;|&nbsp;&nbsp;
-    <Link to='/signup' className='NavBar-link'>SIGN UP</Link>
-  </div>
-  
-  return (
-    <div className='NavBar'>
-      {nav}
     </div>
-  );
+    <div className="my-2">
+    <Link to='/signup' className='NavBar-link'>Sign up</Link>
+    </div>
+  </div>
+  )
 };
 
 export default NavBar;

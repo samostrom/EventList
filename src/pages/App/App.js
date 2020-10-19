@@ -13,7 +13,7 @@ import CreateEventPage from '../CreateEventPage/CreateEventPage';
 import EventsPage from '../EventsPage/EventsPage';
 import eventService from '../../utils/eventService';
 import EventDetailPage from '../EventDetailPage/EventDetailPage';
-
+import EditEventPage from '../EditEventPage/EditEventPage';
 
 class App extends Component {
   constructor(){
@@ -28,16 +28,16 @@ class App extends Component {
   componentDidMount = async() => {
     if(!this.state.user) return;
     const profile = await profileService.getOne()
-      this.setState({profile: profile}, () => (this.state.profile));
+      this.setState({profile})
     const events = await eventService.getAll()
       this.setState({events});
   }
 
-  
 
-  handleSignupOrLogin = () => {
+  handleSignupOrLogin = async() => {
     this.setState({user: userService.getUser()});
-    
+    const profile = await profileService.getOne()
+    this.setState({profile})
   }
 
   handleLogout = () => {
@@ -53,6 +53,16 @@ class App extends Component {
       );
   };
 
+  handleDeleteEvent = async(id) => {
+    await eventService.deleteOne(id);
+    this.setState((state) => ({
+      events: state.events.filter((e) => e._id !== id),
+    }),
+    () => this.props.history.push("/events")
+    );
+  };
+
+
   handleAddEvent = async(eventData) => {
     const newEvent = await eventService.create(eventData);
 
@@ -63,18 +73,43 @@ class App extends Component {
     );
   };
 
+  handleUpdateEvent = async(eventData) => {
+    const updatedEvent = await eventService.update(eventData);
+    const newEventArray = this.state.events.map((e) => 
+      e._id === updatedEvent._id ? updatedEvent : e
+    );
+    this.setState(
+      {events: newEventArray}, () => this.props.history.push("/events")
+    );
+    
+  };
+
   render(){
     return(
-      <div className="AppContainer">
+      <div>
+        <div className="row">
+          <div className="col-3">
+        
         <NavBar
           user={this.state.user}
           handleLogout={this.handleLogout}
-          
-        />
+          />
+          </div>
+          <div className="col-9 py-4 align-items-md-start">
+          <h1 className="Header"><u>
+          Event&nbsp;List
+          </u></h1>
+          <br/>
         <Switch>
+          <Route exact path='/editEvent' render={({location}) =>
+            <EditEventPage
+              location={location}
+              handleUpdateEvent={this.handleUpdateEvent}
+              />
+            }/>
           <Route
               exact
-              path="/events/details"
+              path="/eventDetails"
               render={({ location }) => <EventDetailPage location={location} />}
             />
           <Route exact path='/createEvent' render={() =>
@@ -89,6 +124,7 @@ class App extends Component {
               user={this.state.user}
               profile={this.state.profile}
               events={this.state.events}
+              handleDeleteEvent={this.handleDeleteEvent}
             />
           }/>
           <Route exact path='/editProfiles' render={({history}) =>
@@ -122,6 +158,8 @@ class App extends Component {
             />
           }/>
         </Switch>
+        </div>
+        </div>
       </div>
       
     )

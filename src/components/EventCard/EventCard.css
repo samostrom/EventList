@@ -1,7 +1,5 @@
-
-
-.ImageContainer {
-    width: 400px;
+.EventImage {
+    width: 100px;
     border: 5px solid black;
 }
 

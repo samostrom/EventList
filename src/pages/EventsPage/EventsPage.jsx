@@ -8,12 +8,15 @@ const ProfilePage = (props) => {
     return (
         props.events ? 
             <>
-                <h1>Your Events List</h1>
                 <div className="PageContainer">
+                <br/>
+                <h1>Your Events List</h1>
+                <br/>
                     {props.events.map(e => 
                         <EventListItem
                             e={e}
                             key={e._id}
+                            handleDeleteEvent={props.handleDeleteEvent}
                         />
                     )}
                     

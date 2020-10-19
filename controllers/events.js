@@ -36,7 +36,9 @@ async function show(req,res){
 async function create(req, res){
     try{
         const events = await Event.create(req.body);
-
+        const profile = await Profile.findOne(req.params.id)
+        events.host = profile
+        await events.save()
         res.status(201).json(events)
     } catch(err){
         res.status(404).json(err)

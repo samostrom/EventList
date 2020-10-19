@@ -4,7 +4,8 @@ const LandingPage = (props) => {
     return (
         <div className="LandingPage">
             <div>
-                This is the Landing Page
+                <p>Hi And Welcome To Event List.</p>
+                <p>Please use the sign up or log in options on the side</p>
             </div>
         </div>
     )
