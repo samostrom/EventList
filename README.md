@@ -4,7 +4,7 @@
 
 ## Tech Used
 
-#### Javascript, Node.js, React, MongoDB/Mongoose, CSS, HTML, BootStrap
+#### Javascript, Node.js, React, Express, MongoDB/Mongoose, CSS, HTML, BootStrap
 
 ## Links
 
