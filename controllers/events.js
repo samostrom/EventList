@@ -15,7 +15,7 @@ module.exports = {
 async function index(req, res){
     try {
         const events = await Event.find({})
-        console.log(events)
+        
         res.status(200).json(events)
         
     } catch(err){

@@ -19,7 +19,7 @@ async function show(req,res){
 
 async function create(req, res){
     try{
-        // req.body.user = req.user._id
+        
         const profiles = await Profile.create(req.body);
 
         res.status(201).json(profiles)

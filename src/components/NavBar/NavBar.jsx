@@ -11,6 +11,7 @@ const NavBar = (props) => {
     <div className="my-2">
     WELCOME, {props.user.name}
     </div>
+    <input type="text" value={this.state.search}></input>
     <div className="my-2">
     <Link to='/profiles' className='NavBar-link'>Profile</Link>
     </div>

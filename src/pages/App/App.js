@@ -22,6 +22,7 @@ class App extends Component {
       user: userService.getUser(),
       profile: null,
       events: [],
+      search: 
     };
   }
 
