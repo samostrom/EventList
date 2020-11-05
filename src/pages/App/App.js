@@ -22,7 +22,8 @@ class App extends Component {
       user: userService.getUser(),
       profile: null,
       events: [],
-      search: 
+      inputValue: '',
+      SearchResults: [], 
     };
   }
 
@@ -32,6 +33,13 @@ class App extends Component {
       this.setState({profile})
     const events = await eventService.getAll()
       this.setState({events});
+  }
+
+  handleSearch = (e) => {
+    console.log("hi from handleSearch", e.target.value)
+    this.setState({  
+      inputValue: e.target.value
+    })
   }
 
 
@@ -94,6 +102,8 @@ class App extends Component {
         <NavBar
           user={this.state.user}
           handleLogout={this.handleLogout}
+          handleSearch={this.handleSearch}
+          inputValue={this.state.inputValue}
           />
           </div>
           <div className="col-9 py-4 align-items-md-start">
