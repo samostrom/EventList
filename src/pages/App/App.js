@@ -35,11 +35,11 @@ class App extends Component {
       this.setState({events});
   }
 
-  handleSearch = (e) => {
-    console.log("hi from handleSearch", e.target.value)
+  handleOnChangeSearch = (e) => {
     this.setState({  
       inputValue: e.target.value
     })
+    
   }
 
 
@@ -102,7 +102,7 @@ class App extends Component {
         <NavBar
           user={this.state.user}
           handleLogout={this.handleLogout}
-          handleSearch={this.handleSearch}
+          handleOnChangeSearch={this.handleOnChangeSearch}
           inputValue={this.state.inputValue}
           />
           </div>

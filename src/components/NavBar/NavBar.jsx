@@ -5,13 +5,14 @@ import { Link } from 'react-router-dom';
 import './NavBar.css';
 
 const NavBar = (props) => {
+
   return (
   props.user ?
   <div className="d-flex flex-column align-items-start ml-4 mt-4">
     <div className="my-2">
     WELCOME, {props.user.name}
     </div>
-    <input type="text" value={props.inputValue} onChange={props.handleSearch} placeholder='search user'></input>
+    <input type="text" value={props.inputValue} onChange={props.handleOnChangeSearch} placeholder='search user'></input>
     <div className="my-2">
     <Link to='/profiles' className='NavBar-link'>Profile</Link>
     </div>
